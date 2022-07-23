@@ -11,14 +11,14 @@ import (
 
 func GetTodos(c *gin.Context) {
 
-	var tasks []models.Task
+	var tasks []models.Todo
 	db := db.GetDB()
 	db.Find(&tasks)
 	c.JSON(200, tasks)
 }
 
 func CreateTodo(c *gin.Context) {
-	var task models.Task
+	var task models.Todo
 	var db = db.GetDB()
 
 	if err := c.BindJSON(&task); err != nil {
@@ -33,7 +33,7 @@ func CreateTodo(c *gin.Context) {
 
 func UpdateTodo(c *gin.Context) {
 	id := c.Param("id")
-	var task models.Task
+	var task models.Todo
 
 	db := db.GetDB()
 	if err := db.Where("id = ?", id).First(&task).Error; err != nil {
@@ -47,7 +47,7 @@ func UpdateTodo(c *gin.Context) {
 
 func DeleteTodo(c *gin.Context) {
 	id := c.Param("id")
-	var task models.Task
+	var task models.Todo
 	db := db.GetDB()
 
 	if err := db.Where("id = ?", id).First(&task).Error; err != nil {

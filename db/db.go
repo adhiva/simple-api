@@ -29,7 +29,7 @@ func Init() {
 	password := "postgrespw"
 	host := "localhost"
 	port := "55000"
-	database := "todos"
+	database := "todo_list"
 
 	dbinfo := fmt.Sprintf("user=%s password=%s host=%s port=%s dbname=%s sslmode=disable",
 		user,
@@ -46,14 +46,14 @@ func Init() {
 	}
 	log.Println("Database connected")
 
-	if !db.Migrator().HasTable(&models.Task{}) {
-		err := db.Migrator().CreateTable(&models.Task{})
+	if !db.Migrator().HasTable(&models.Todo{}) {
+		err := db.Migrator().CreateTable(&models.Todo{})
 		if err != nil {
 			log.Println("Table already exists")
 		}
 	}
 
-	db.AutoMigrate(&models.Task{})
+	db.AutoMigrate(&models.Todo{})
 }
 
 //GetDB ...
