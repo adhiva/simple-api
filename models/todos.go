@@ -11,9 +11,9 @@ import (
 type Todo struct {
 	ID        uuid.UUID `json:"id"`
 	Title     string    `json:"title" binding:"required"`
+	Completed bool      `json:"completed"`
 	CreatedAt time.Time `json:"created_at"`
 	UpdatedAt time.Time `json:"updated_at"`
-	Completed bool      `json:"completed"`
 }
 
 func (task *Todo) BeforeCreate(scope *gorm.DB) error {

@@ -3,7 +3,6 @@ package db
 import (
 	"fmt"
 	"log"
-	"os"
 	"sample-api/models"
 
 	_ "github.com/lib/pq"
@@ -14,13 +13,6 @@ import (
 
 var db *gorm.DB
 var err error
-
-func getEnv(key, fallback string) string {
-	if value, ok := os.LookupEnv(key); ok {
-		return value
-	}
-	return fallback
-}
 
 // Init creates a connection to mysql database and
 // migrates any new models

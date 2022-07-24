@@ -7,7 +7,7 @@ A simple Rest API for Learning golang at [myskill.id](https://myskill.id)
 
 ### Installation
 ```sh
-git clone
+git clone https://github.com/adhiva/simple-api
 cd simple-api
 go get
 ```
